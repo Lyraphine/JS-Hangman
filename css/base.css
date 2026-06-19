@@ -1,0 +1,386 @@
+/* Author: Lydia Asselstine */
+
+html {
+    box-sizing: border-box;
+    font-size: 100%; 
+    padding: 0; 
+    margin: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+/*------       ------*/
+/*------ fonts ------*/
+/*------       ------*/
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/nunito-variablefont_wght-webfont.woff2') format('woff2'),
+         url('../fonts/nunito-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*------      ------*/
+/*------ body ------*/
+/*------      ------*/
+body{
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+    color: #3a393a;
+    background-color: #e8e5e6;
+}
+
+/* COLOUR PALETTE
+ https://coolors.co/558479-877b87-87a69d-625268-e8e5e6 */
+
+
+/*------        ------*/
+/*------ header ------*/
+/*------        ------*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: solid 1px #e8e5e6;
+    background-color: #ffffff;
+}
+
+header img{
+    width: 50px;
+}
+
+
+/*------     ------*/
+/*------ nav ------*/
+/*------     ------*/
+nav{
+    visibility: hidden;
+    height: 0px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+nav.transitions-enabled {
+    transition: height 0.3s ease-in-out;
+}
+
+/*------      ------*/
+/*------ main ------*/
+/*------      ------*/
+main{
+    flex: 1;
+}
+
+
+/*------          ------*/
+/*------ sections ------*/
+/*------          ------*/
+section{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 95%;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px;
+    border: 1px solid #dfd0df;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/*------        ------*/
+/*------ footer ------*/
+/*------        ------*/
+footer {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+}
+
+
+/*------         ------*/
+/*------ content ------*/
+/*------         ------*/
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+p{
+    margin: 5px 10px;
+}
+
+a:link, a:visited {
+    color: #558479;
+}
+
+a:hover {
+    color: #8d55a3;
+}
+
+a:active {
+    color: #87A69D;
+}
+
+ul{
+    list-style-image: url(../images/bullet.png);
+}
+
+ol{
+    list-style: lower-alpha;
+}
+
+h1, h2, h3, h4, h5, h6{
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: #558479;
+}
+
+table{
+    margin: 10px auto;
+    border-top: 1px solid #877B87;
+    border-right: 1px solid #877B87;
+    border-spacing: 0px;
+    max-width: fit-content;
+    color: #625268;
+    background-color: #eef0ef;
+}
+
+th{
+    color: #625268;
+    font-weight: bold;
+    background-color: #b0c5bf;
+}
+
+th, td{
+    border-bottom: 1px solid #877B87;
+    border-left: 1px solid #877B87;
+    padding: 10px;
+}
+
+
+/*------         ------*/
+/*------ classes ------*/
+/*------         ------*/
+.show {
+	visibility: visible;
+    height: 196px;
+}
+
+.btn-menu{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    gap: 10px;
+    font-size: 2rem;
+    color: #625268;
+    background-color: #ffffff;
+}
+
+.btn-text1{
+    display: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-logo{
+    display: none;
+    width: 150px;
+    margin: 30px auto;
+}
+
+.nav-link{
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: solid 1px #e8e5e6;
+    padding: 10px;
+    width: 150px;
+    scale: 100%;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.nav-link:link, .fab:link, .fas:link{
+    color: #558479;
+}
+
+.nav-link:hover, .fab:hover, .fas:hover{
+    color: #8d55a3;
+    transform: scale(1.1);
+    text-shadow: 0 0 1px #87A69D;
+}
+
+.nav-link:active, .fab:active, .fas:active{
+    color: #87A69D;
+}
+
+.font-icons{
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    padding: 0px 20px 0px 0px;
+}
+
+.fab, .fas{
+    font-size: 1.3rem;
+    scale: 100%;
+    transition: transform 0.3s ease;
+}
+
+.banner{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.banner::before, .banner::after{
+    content: '';
+    flex: 1;
+    border-top: 2px solid #b0c5bf;
+}
+
+.assignment{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.assignment article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    min-height: 100px;
+    border: 2px solid #877B87;
+    border-radius: 20px;
+    background-color: rgba(176, 197, 191, 0.2);
+}
+
+
+/*------     ------*/
+/*------ ids ------*/
+/*------     ------*/
+#nav-ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    color: #625268;
+}
+
+#page-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#page-title h1, #page-title h2 {
+    border-top: none;
+    margin: 0px;
+    padding: 0px;
+    color: #545254;
+}
+
+#page-title h2{
+    font-weight: lighter;
+    letter-spacing: 1px;
+    border-bottom: solid 1px #877B87;
+}
+
+#page-title h3{
+    border-top: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    padding: 0px;
+    color: #877B87;
+}
+
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 320px;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+}
+
+
+/*------               ------*/
+/*------ media queries ------*/
+/*------               ------*/
+/*------ medium device size ------*/
+@media (min-width: 640px){
+    section{
+        padding: 40px;
+    }
+    .btn-text1 {
+        display: inline-block;
+    }
+    .font-icons{
+        width: 250px;
+        padding: 0px 0px 0px 40px;
+    }
+}
+
+
+/*------ large device size ------*/
+@media (min-width: 1024px){
+    nav{
+        display: flex;
+        flex-direction: column;
+        visibility: visible;
+        transition: height 0s ease-in;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+    }
+    nav.transitions-enabled {
+        transition: none;
+    }
+    header{
+		display: none;
+	}
+    main {
+        margin-left: 250px;
+    }
+    section{
+        padding: 50px;
+    }
+    footer {
+        margin-left: 250px;
+    }
+    .nav-logo{
+        display: block;
+    }
+    .nav-link{
+        padding: 20px;
+    }
+    .font-icons{
+        border-top: 1px solid #e8e5e6;
+        margin: auto auto 20px auto;
+        padding: 20px 0px 0px 0px;
+        width: 200px;
+    }
+    #page-title{
+        margin: 30px;
+    }
+}
