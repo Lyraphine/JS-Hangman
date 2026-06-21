@@ -1,6 +1,8 @@
 // Author: Lydia Asselstine
 
+// ****************
 // *** KEYBOARD ***
+// ****************
 const alphabet  = "abcdefghijklmnopqrstuvwxyz".split("");
 const $keyboard = $("#keyboard");
 
@@ -68,3 +70,46 @@ function disableGuess($button)
 {
     $button.prop("disabled", true);
 }
+
+
+// ************
+// *** DATA ***
+// ************
+const $word = $("#word");
+const $hint = $("#hint");
+
+fetch("../data/words.json")
+    .then(function(response)
+    {
+        if(response.ok)
+        {
+            return response.json();
+        }
+        else
+        {
+            throw new Error("Failed to fetch words");
+        }
+    })
+    .then(function(data)
+    {
+        let randomIndex = Math.floor(Math.random() * data.length);
+        let currentWord = data[randomIndex];
+        let wordLetters = currentWord.word.split("");
+        let hint        = currentWord.hint;
+
+        wordLetters.forEach(function(letter)
+        {
+            const $letterTile = $("<span>");
+
+            $letterTile.text("_");
+            $letterTile.addClass("letter-tile");
+
+            $word.append($letterTile);
+        });
+
+        $hint.text(hint);
+    })
+    .catch(function(error)
+    {
+        $word.text(error);
+    });
