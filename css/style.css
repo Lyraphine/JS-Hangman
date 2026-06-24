@@ -445,7 +445,7 @@ ol {
 
 h1, h2, h3, h4, h5, h6 {
   align-self: center;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 0px;
   color: #558479;
 }
@@ -559,7 +559,6 @@ th, td {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 .assignment article {
@@ -567,7 +566,6 @@ th, td {
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  min-height: 100px;
   border: 2px solid #877B87;
   border-radius: 20px;
   background-color: rgba(176, 197, 191, 0.2);
@@ -686,22 +684,41 @@ th, td {
     margin: 30px;
   }
 }
+#word {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.letter-tile {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #625268;
+  background-color: #d5d5d5;
+}
+
 #keyboard {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 475px;
+  margin-bottom: 5px;
 }
 
 .keyboard-key {
   color: #625268;
   background-color: #eef0ef;
-  border: 1px solid #877B87;
   border-radius: 10px;
   padding: 10px;
-  margin: 5px;
+  margin: 8px;
   text-transform: uppercase;
+  border: 1px solid #877B87;
   width: 40px;
+  margin: 5px;
 }
 .keyboard-key:hover {
   background-color: #e8e5e6;
@@ -719,20 +736,44 @@ th, td {
   border-color: #d4cdd4;
 }
 
-.letter-tile {
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: #625268;
-  background-color: #d5d5d5;
-}
-
-#word {
-  margin: 10px;
-}
-
 #hint {
-  margin: 10px;
+  margin: 20px;
+}
+
+#hint-btn, #reset {
+  color: #eef0ef;
+  background-color: #87A69D;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 8px;
+  border: 2px solid #877B87;
+  font-weight: bold;
+}
+#hint-btn:hover, #reset:hover {
+  color: #558479;
+  background-color: #deebe7;
+  border-color: #87A69D;
+}
+#hint-btn:active, #reset:active {
+  color: #eef0ef;
+  background-color: #625268;
+  border-color: #877B87;
+}
+
+#image {
+  margin: 15px;
+}
+
+#incorrect {
+  margin: 15px;
+}
+
+#instructions {
+  text-align: center;
+  max-width: 600px;
+  margin: 5px;
+}
+
+.hidden {
+  display: none;
 }

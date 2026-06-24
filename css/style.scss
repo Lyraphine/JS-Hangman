@@ -1,27 +1,51 @@
 @use 'normalize';
 @use 'base';
 
-@mixin button-style($text-color, $bg-color, $border-color){
+// *** MIXINS ***
+@mixin button-style($text-color, $bg-color){
     color: $text-color;
     background-color: $bg-color;
-    border: 1px solid $border-color;
     border-radius: 10px;
     padding: 10px;
-    margin: 5px;
+    margin: 8px;
 }
 
+
+// *** WORD TILES ***
+#word{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.letter-tile{
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #625268;
+    background-color: #d5d5d5;
+}
+
+
+// *** KEYBOARD ***
 #keyboard{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 475px;
+    margin-bottom: 5px;
 }
 
 .keyboard-key{
-    @include button-style(#625268, #eef0ef, #877B87);
+    @include button-style(#625268, #eef0ef);
     text-transform: uppercase;
+    border: 1px solid #877B87;
     width: 40px;
-    
+    margin: 5px;
+
     &:hover{
         background-color: #e8e5e6;
     }
@@ -41,20 +65,46 @@
     }
 }
 
-.letter-tile{
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #625268;
-    background-color: #d5d5d5;
-}
 
-#word{
-    margin: 10px;
-}
-
+// *** HINTS ***
 #hint{
-    margin: 10px;
+    margin: 20px;
+}
+
+#hint-btn, #reset{
+    @include button-style(#eef0ef ,#87A69D);
+    border: 2px solid #877B87;
+    font-weight: bold;
+
+    &:hover{
+        color: #558479;
+        background-color: #deebe7;
+        border-color: #87A69D;
+    }
+
+    &:active{
+        color: #eef0ef;
+        background-color: #625268;
+        border-color: #877B87;
+    }
+}
+
+
+// *** MISC ***
+#image{
+    margin: 15px;
+}
+
+#incorrect{
+    margin: 15px;
+}
+
+#instructions{
+    text-align: center;
+    max-width: 600px;
+    margin: 5px;
+}
+
+.hidden{
+    display: none;
 }
