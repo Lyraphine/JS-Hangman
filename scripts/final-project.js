@@ -1,5 +1,10 @@
 // Author: Lydia Asselstine
 
+// *****************
+// *** VARIABLES ***
+// **** CLASSES ****
+// *****************
+
 const alphabet         = "abcdefghijklmnopqrstuvwxyz".split("");
 const $image           = $("#image");
 const $keyboard        = $("#keyboard");
@@ -9,8 +14,26 @@ const $hint            = $("#hint");
 const $hintButton      = $("#hint-btn");
 const $reset           = $("#reset");
 const instructionsText = $("#instructions p").html();
-const wrongGuessMax    = 6;
-let   wrongGuesses     = 0;
+
+const game = {
+    wrongGuesses:  0,
+    wrongGuessMax: 6,
+
+    reset: function()
+    {
+        this.wrongGuesses = 0;
+    },
+
+    addWrongGuess: function()
+    {
+        this.wrongGuesses++;
+    },
+
+    isLost: function()
+    {
+        return this.wrongGuesses > this.wrongGuessMax;
+    }
+};
 
 
 // ****************
@@ -59,7 +82,10 @@ $(document).keyup(function(event)
         handleGuess($button, letter); 
     }
     
-    $button.removeClass("active");
+    if($button)
+    {
+        $button.removeClass("active");
+    }
 });
 
 // Finds the matching button for the letter that was pressed
@@ -150,7 +176,7 @@ $reset.click(function()
 // and fetching new data
 function startGame()
 {
-    wrongGuesses = 0; 
+    game.reset();
 
     $keyboard.empty();
     $word.empty();
@@ -166,8 +192,11 @@ function startGame()
     $hintButton.show();
 
     $reset.text("Reset Game");
-    $incorrect.text("Wrong guesses: " + wrongGuesses);
+    $incorrect.text("Wrong guesses: " + game.wrongGuesses);
     $("#instructions p").html(instructionsText);
+
+    transitionImage("../images/start.jpg", 
+                    "Start image");
 }
 
 
@@ -205,7 +234,7 @@ function revealLetter(letter)
 // Checking for win or lose conditions
 function checkGameState()
 {
-    if(wrongGuesses > wrongGuessMax)
+    if(game.isLost())
     {
         loseCondition();
     }
@@ -239,15 +268,26 @@ function handleGuess($button, letter)
 
     if(match === false)
     {
-        wrongGuesses++;
+        game.addWrongGuess();
 
-        $image.attr("src", `../images/state${wrongGuesses}.jpg`);
-        $image.attr("alt", `state${wrongGuesses}.jpg`);
+        transitionImage(`../images/state${game.wrongGuesses}.jpg`, 
+                        `Wrong guess ${game.wrongGuesses}`);
     }
 
     disableKey($button);
     checkGameState();
-    $incorrect.text("Wrong guesses: " + wrongGuesses);
+    $incorrect.text("Wrong guesses: " + game.wrongGuesses);
+}
+
+// Image fade in and out
+function transitionImage(newSrc, newAlt)
+{
+    $image.fadeOut(300, function()
+    {
+        $image.attr("src", newSrc);
+        $image.attr("alt", newAlt);
+        $image.fadeIn(300);
+    });
 }
 
 
@@ -257,8 +297,8 @@ function handleGuess($button, letter)
 
 function winCondition()
 {
-    $image.attr("src", "../images/win.jpg");
-    $image.attr("alt", "win.jpg");
+    transitionImage("../images/win.jpg", 
+                    "Win image");
 
     $keyboard.hide();
     $word.hide();
@@ -272,8 +312,8 @@ function winCondition()
 
 function loseCondition()
 {
-    $image.attr("src", "../images/lose.jpg");
-    $image.attr("alt", "lose.jpg");
+    transitionImage("../images/lose.jpg", 
+                    "Lose image");
 
     $keyboard.hide();
     $word.hide();

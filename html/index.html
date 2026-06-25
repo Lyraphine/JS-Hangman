@@ -66,13 +66,18 @@
                     <h2>Hangman</h2>
                     <div class="assignment">
                         <article>
-                            <img id="image" src="../images/start.jpg" alt="start.jpg">
+                            <div id="image-div">
+                                <img id="image" src="../images/start.jpg" alt="Start game image">
+                            </div>
+
                             <div id="word" class="hidden"></div>
                             <div id="incorrect" class="hidden"></div>
                             <div id="keyboard" class="hidden"></div>
                             <div id="hint" class="hidden"></div>
                             <button id="hint-btn" class="hidden">Show Hint</button>
+
                             <button id="reset">Play Game</button>
+
                             <div id="instructions">
                                 <p><strong>Instructions:</strong> Guess a letter from the mystery word. Beware: Hammy is trying to eat your bowl of sunflower seeds and will eat one for each wrong guess. Guess the entire word before Hammy eats all your snacks!</p>
                             </div>
